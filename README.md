@@ -10,7 +10,6 @@
             .no-print { display: none; }
             .page-break { page-break-after: always; }
         }
-        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             max-width: 1200px;
@@ -19,64 +18,54 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
-        
-        .container {
+               .container {
             background: white;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
-        
-        .header {
+               .header {
             text-align: center;
             border-bottom: 4px solid #667eea;
             padding-bottom: 20px;
             margin-bottom: 30px;
         }
-        
-        .header h1 {
+               .header h1 {
             color: #667eea;
             margin: 0;
             font-size: 2.5em;
         }
-        
-        .header p {
+               .header p {
             color: #666;
             font-size: 1.2em;
             margin: 10px 0;
         }
-        
-        .timeline-info {
+                .timeline-info {
             background: #f0f4ff;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
             border-left: 5px solid #667eea;
         }
-        
-        .day-section {
+                .day-section {
             margin: 30px 0;
             padding: 25px;
             background: #f9fafb;
             border-radius: 8px;
             border-left: 5px solid #10b981;
         }
-        
-        .day-section.intermediate {
+                .day-section.intermediate {
             border-left-color: #f59e0b;
         }
-        
-        .day-section.advanced {
+                .day-section.advanced {
             border-left-color: #ef4444;
         }
-        
-        .day-header {
+                .day-header {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
         }
-        
-        .day-number {
+                .day-number {
             background: #667eea;
             color: white;
             width: 50px;
@@ -89,75 +78,63 @@
             font-weight: bold;
             margin-right: 15px;
         }
-        
-        .day-title {
+                .day-title {
             flex: 1;
         }
-        
-        .day-title h2 {
+                .day-title h2 {
             margin: 0;
             color: #1f2937;
             font-size: 1.8em;
         }
-        
-        .day-title p {
+                .day-title p {
             margin: 5px 0 0 0;
             color: #6b7280;
-        }
-        
-        .topics-list {
+        } 
+                .topics-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 10px;
             margin-top: 15px;
         }
-        
-        .topic-item {
+                .topic-item {
             background: white;
             padding: 12px 15px;
             border-radius: 6px;
             border-left: 3px solid #10b981;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        
-        .topic-number {
+               .topic-number {
             font-weight: bold;
             color: #667eea;
             margin-right: 8px;
         }
-        
-        .study-tips {
+                .study-tips {
             background: #fef3c7;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
             border-left: 5px solid #f59e0b;
         }
-        
-        .study-tips h3 {
+                .study-tips h3 {
             color: #92400e;
             margin-top: 0;
         }
-        
-        .tips-grid {
+                .tips-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 15px;
             margin-top: 15px;
         }
-        
-        .tip-card {
+                .tip-card {
             background: white;
             padding: 15px;
             border-radius: 6px;
         }
-        
-        .tip-icon {
+                .tip-icon {
             font-size: 1.5em;
             margin-bottom: 10px;
         }
-        
-        .download-btn {
+                .download-btn {
             background: #667eea;
             color: white;
             border: none;
@@ -170,39 +147,33 @@
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
             transition: all 0.3s;
         }
-        
-        .download-btn:hover {
+                .download-btn:hover {
             background: #5568d3;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
-        
-        .resources {
+                .resources {
             background: #ecfdf5;
             padding: 20px;
             border-radius: 8px;
             border-left: 5px solid #10b981;
             margin: 20px 0;
         }
-        
-        .progress-tracker {
+                .progress-tracker {
             background: white;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
-        .checkbox-item {
+                .checkbox-item {
             padding: 8px;
             margin: 5px 0;
         }
-        
-        .checkbox-item input {
+                .checkbox-item input {
             margin-right: 10px;
         }
-        
-        .level-badge {
+                .level-badge {
             display: inline-block;
             padding: 5px 12px;
             border-radius: 15px;
@@ -210,18 +181,15 @@
             font-weight: bold;
             margin-left: 10px;
         }
-        
-        .level-basic {
+                .level-basic {
             background: #d1fae5;
             color: #065f46;
         }
-        
-        .level-intermediate {
+                .level-intermediate {
             background: #fef3c7;
             color: #92400e;
         }
-        
-        .level-advanced {
+                .level-advanced {
             background: #fee2e2;
             color: #991b1b;
         }
@@ -235,17 +203,14 @@
             <p>Oct 13, 2025 - Oct 20, 2025</p>
             <p>From Zero to Placement Ready! 💼</p>
         </div>
-        
-        <button class="download-btn no-print" onclick="window.print()">📥 Download as PDF</button>
-        
-        <div class="timeline-info">
+                <button class="download-btn no-print" onclick="window.print()">📥 Download as PDF</button>
+                <div class="timeline-info">
             <h3>📊 Overview</h3>
             <p><strong>Total Topics:</strong> 55 Topics (Basic → Intermediate → Advanced)</p>
             <p><strong>Duration:</strong> 7 Days of Focused Learning</p>
             <p><strong>Goal:</strong> Ready for C# job by October 20th</p>
             <p><strong>Study Time:</strong> 6-8 hours per day recommended</p>
         </div>
-
         <!-- DAY 1 -->
         <div class="day-section">
             <div class="day-header">
@@ -279,7 +244,6 @@
                 </div>
             </div>
         </div>
-
         <!-- DAY 2 -->
         <div class="day-section">
             <div class="day-header">
@@ -313,7 +277,6 @@
                 </div>
             </div>
         </div>
-
         <!-- DAY 3 -->
         <div class="day-section">
             <div class="day-header">
@@ -344,9 +307,7 @@
                 </div>
             </div>
         </div>
-
         <div class="page-break"></div>
-
         <!-- DAY 4 -->
         <div class="day-section intermediate">
             <div class="day-header">
@@ -389,7 +350,6 @@
                 </div>
             </div>
         </div>
-
         <!-- DAY 5 -->
         <div class="day-section intermediate">
             <div class="day-header">
@@ -432,7 +392,6 @@
                 </div>
             </div>
         </div>
-
         <!-- DAY 6 -->
         <div class="day-section advanced">
             <div class="day-header">
@@ -469,7 +428,6 @@
                 </div>
             </div>
         </div>
-
         <!-- DAY 7 -->
         <div class="day-section advanced">
             <div class="day-header">
@@ -503,7 +461,6 @@
                 </div>
             </div>
         </div>
-
         <div class="study-tips">
             <h3>💡 Study Tips for Maximum Retention</h3>
             <div class="tips-grid">
@@ -539,7 +496,6 @@
                 </div>
             </div>
         </div>
-
         <div class="resources">
             <h3>📚 Recommended Resources</h3>
             <ul>
@@ -550,7 +506,6 @@
                 <li><strong>Community:</strong> StackOverflow, Reddit r/csharp</li>
             </ul>
         </div>
-
         <div class="progress-tracker">
             <h3>✅ Daily Progress Tracker</h3>
             <p><em>Print this page and check off each day as you complete it!</em></p>
@@ -576,7 +531,6 @@
                 <input type="checkbox" id="day7"> <label for="day7"><strong>Day 7:</strong> Modern C# & Polish (Topics 49-55) ✓</label>
             </div>
         </div>
-
         <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f0f4ff; border-radius: 8px;">
             <h2 style="color: #667eea; margin: 0;">🎉 You've Got This, Vijay!</h2>
             <p style="font-size: 1.2em; color: #1f2937;">Stay focused, practice daily, and you'll be placement-ready by Oct 20th!</p>
