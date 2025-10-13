@@ -1,0 +1,39 @@
+using System;
+
+namespace OOPS
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the first number: ");
+            int Firstnumber = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter the first limit: ");
+            int Range = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("ENTERED NUMBER IS " + Firstnumber + " AND ENTERED LIMIT IS " + Range);
+
+            Console.Write("Enter the second number: ");
+            int Secondnumber = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter the second limit: ");
+            int num = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("ENTERED NUMBER IS " + Secondnumber + " AND ENTERED LIMIT IS " + num);
+
+            // Outer loop
+            while (Firstnumber < Range)
+            {
+                // Inner loop
+                while (Secondnumber < num)
+                {
+                    Console.WriteLine("print * " + Secondnumber);
+                    Secondnumber++;
+                }
+
+                Firstnumber++; // Prevent infinite loop
+            }
+        }
+    }
+}
