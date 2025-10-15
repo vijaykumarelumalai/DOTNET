@@ -1,0 +1,30 @@
+
+
+using System;
+using System.Text.RegularExpressions;
+
+class Program
+{
+    static void Main()
+    {
+        // Define the patterns
+        string emailPattern = @"^[\w\.-]+@[\w\.-]+\.\w{2,4}$";
+        string mobilePattern = @"^[6-9]\d{9}$";
+        string panPattern = @"^[A-Z]{5}\d{4}[A-Z]$";
+
+        // Get user input
+        Console.Write("Enter Your Email: ");
+        string emailInput = Console.ReadLine();
+
+        Console.Write("Enter Your Mobile: ");
+        string mobileInput = Console.ReadLine();
+
+        Console.Write("Enter Your PAN: ");
+        string panInput = Console.ReadLine();
+
+        // Validate using Regex
+        Console.WriteLine("Email valid: " + Regex.IsMatch(emailInput, emailPattern));
+        Console.WriteLine("Mobile valid: " + Regex.IsMatch(mobileInput, mobilePattern));
+        Console.WriteLine("PAN valid: " + Regex.IsMatch(panInput, panPattern));
+    }
+}
