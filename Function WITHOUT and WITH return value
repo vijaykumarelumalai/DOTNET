@@ -1,0 +1,28 @@
+using System;
+
+class Program   //(fields)
+{
+    // 1️⃣ Function WITHOUT return value (void)
+    static void Greet(string name)                                  //method   signature
+    {                                                                //method   body            
+        Console.WriteLine($"Hello, {name}!");   // prints greeting message
+    }                                              // end of Greet method                             
+
+    // 2️⃣ Function WITH return value 
+    static int Add(int a, int b)          // method signature
+    {                                     // method body              
+        return a + b; // returns sum to the caller
+    }                                       // end of Add method
+
+    static void Main(string[] args)   // Main method - entry point of the program
+    {
+        // Calling function WITHOUT return value
+
+        Greet("Vijay");         // function call
+
+        // Calling function WITH return value
+
+        int sum = Add(10, 20);          // function call
+        Console.WriteLine($"Sum: {sum}"); // prints the sum
+    }
+}
