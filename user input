@@ -1,0 +1,16 @@
+using System;
+
+class Program
+  {
+    static void Main(string[] args)
+    {
+      Console.Write("Enter your Name:");  
+      string name = Console.ReadLine();
+      Console.Write("Enter your Age:");  
+      int age =Convert.ToInt32(Console.ReadLine());
+      Console.WriteLine("Hello "+ name);
+      Console.WriteLine(name + "your  age is "+ age);
+      
+      
+    }
+  }
