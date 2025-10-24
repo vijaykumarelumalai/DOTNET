@@ -1,0 +1,56 @@
+using System;
+
+class Student
+{
+    public string name;
+    public int age;
+    public string course;
+
+    // 1️⃣ Default Constructor (no parameters)
+    public Student()
+    {
+        name = "Unknown";
+        age = 0;
+        course = "Not Assigned";
+    }
+
+    // 2️⃣ Constructor with 2 parameters
+    public Student(string n, int a)
+    {
+        name = n;
+        age = a;
+        course = "Not Assigned";
+    }
+
+    // 3️⃣ Constructor with 3 parameters
+    public Student(string n, int a, string c)
+    {
+        name = n;
+        age = a;
+        course = c;
+    }
+
+    public void Display()
+    {
+        Console.WriteLine($"Name: {name}, Age: {age}, Course: {course}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Calls Default Constructor
+        Student s1 = new Student();
+
+        // Calls Constructor with 2 parameters
+        Student s2 = new Student("Vijay", 22);
+
+        // Calls Constructor with 3 parameters
+        Student s3 = new Student("Vijay Kumar", 23, "C# Developer");
+
+        s1.Display();
+        s2.Display();
+        s3.Display();
+    }
+}
