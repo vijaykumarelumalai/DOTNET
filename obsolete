@@ -1,0 +1,21 @@
+using System;
+
+[Obsolete("This method is obsolete, use NewMethod instead.")]
+class Program
+{
+    static void OldMethod()
+    {
+        Console.WriteLine("Old method");
+    }
+
+    static void NewMethod()
+    {
+        Console.WriteLine("New method");
+    }
+
+    static void Main()
+    {
+        OldMethod(); // Compiler warning due to Obsolete attribute
+        NewMethod();
+    }
+}
