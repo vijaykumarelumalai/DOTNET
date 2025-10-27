@@ -1,0 +1,127 @@
+using System;
+using System.Collections.Generic;
+
+namespace Todo_List
+{
+    class Program
+    {
+        // Shared in-memory task storage
+        static List<TodoItem> todoList = new List<TodoItem>();
+
+        static void Main(string[] args)
+        {
+            string input;
+            do
+            {
+                Console.WriteLine("\n==== To-Do List Manager ====");
+                Console.WriteLine("1. Add Task");
+                Console.WriteLine("2. List Tasks");
+                Console.WriteLine("3. Mark Task as Done");
+                Console.WriteLine("4. Remove Task");
+                Console.WriteLine("5. Exit");
+                Console.Write("Choose an option: ");
+                input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "1":
+                        AddTask();
+                        break;
+                    case "2":
+                        ListTasks();
+                        break;
+                    case "3":
+                        MarkTaskAsDone();
+                        break;
+                    case "4":
+                        RemoveTask();
+                        break;
+                    case "5":
+                        Console.WriteLine("Goodbye!");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option, try again.");
+                        break;
+                }
+            } while (input != "5");
+        }
+
+        static void AddTask()
+        {
+            Console.Write("Enter task description: ");
+            string desc = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(desc))
+            {
+                Console.WriteLine("Task description cannot be empty.");
+                return;
+            }
+
+            todoList.Add(new TodoItem { Description = desc.Trim(), IsDone = false });
+            Console.WriteLine("Task added!");
+        }
+
+        static void ListTasks()
+        {
+            Console.WriteLine("\nYour Tasks:");
+            if (todoList.Count == 0)
+            {
+                Console.WriteLine("No tasks yet.");
+                return;
+            }
+
+            for (int i = 0; i < todoList.Count; i++)
+            {
+                var item = todoList[i];
+                Console.WriteLine($"{i + 1}. [{(item.IsDone ? "X" : " ")}] {item.Description}");
+            }
+        }
+
+        static void MarkTaskAsDone()
+        {
+            if (todoList.Count == 0)
+            {
+                Console.WriteLine("No tasks to mark.");
+                return;
+            }
+
+            ListTasks();
+            Console.Write("Enter task number to mark as done: ");
+            if (int.TryParse(Console.ReadLine(), out int num) && num >= 1 && num <= todoList.Count)
+            {
+                todoList[num - 1].IsDone = true;
+                Console.WriteLine("Task marked as done!");
+            }
+            else
+            {
+                Console.WriteLine("Invalid task number.");
+            }
+        }
+
+        static void RemoveTask()
+        {
+            if (todoList.Count == 0)
+            {
+                Console.WriteLine("No tasks to remove.");
+                return;
+            }
+
+            ListTasks();
+            Console.Write("Enter task number to remove: ");
+            if (int.TryParse(Console.ReadLine(), out int num) && num >= 1 && num <= todoList.Count)
+            {
+                todoList.RemoveAt(num - 1);
+                Console.WriteLine("Task removed!");
+            }
+            else
+            {
+                Console.WriteLine("Invalid task number.");
+            }
+        }
+
+        class TodoItem
+        {
+            public string Description { get; set; }
+            public bool IsDone { get; set; }
+        }
+    }
+}
