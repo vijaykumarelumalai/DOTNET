@@ -1,0 +1,165 @@
+// PSEUDOCODE / PLAN (detailed)
+// 1. Purpose:
+// - Fix compilation errors related to 'static local functions' (C# 7.3 doesn't support them)
+// - Fix missing 'todoList' identifier (scope issue)
+// - Ensure braces are balanced and code compiles under C# 7.3 / .NET Framework 4.8.1
+
+// 2. Approach:
+// - Move the in-memory task storage 'todoList' to be a private static field of the Program class so all methods can access it.
+// - Convert the local functions declared inside Main into private static methods on the Program class:
+// - AddTask()
+// - ListTasks()
+// - MarkTaskAsDone()
+// - RemoveTask()
+// - Keep 'TodoItem' as a nested class inside Program (class-level), so Program methods can reference it.
+// - Implement input validation for task description (reject empty or whitespace).
+// - Ensure Main only contains the menu loop and calls the class-level static methods.
+// - Ensure correct using directives and namespace.
+// - Ensure all braces are balanced and no local static functions are used.
+
+// 3. Detailed steps to implement:
+// - Add `private static List<TodoItem> todoList = new List<TodoItem>();` to Program.
+// - Move each `static void ...` function from inside Main to be a `private static void ...` method inside Program (but outside Main).
+// - In AddTask(), prompt the user, read input, trim and validate, then add to `todoList`.
+// - In ListTasks(), check `todoList.Count` and iterate to print tasks.
+// - In MarkTaskAsDone() and RemoveTask(), call ListTasks() first, parse input using `int.TryParse`, validate range against `todoList.Count`, and then update or remove as needed.
+// - Keep Main loop structure (do/while) that reads menu choice and calls methods.
+
+// 4. Outcome:
+// - No static local functions are used.
+// - `todoList` is in the correct scope.
+// - The program compiles on C# 7.3 and behaves as original intent.
+
+using System;
+using System.Collections.Generic;
+
+namespace Todolist
+{
+    class Program
+    {
+        // Shared in-memory task storage (class-level so all static methods can access it)
+        private static List<TodoItem> todoList = new List<TodoItem>();
+
+        static void Main(string[] args)
+        {
+            string input;
+            do
+            {
+                Console.WriteLine("\n==== To-Do List Manager ====");
+                Console.WriteLine("1. Add Task");
+                Console.WriteLine("2. List Tasks");
+                Console.WriteLine("3. Mark Task as Done");
+                Console.WriteLine("4. Remove Task");
+                Console.WriteLine("5. Exit");
+                Console.Write("Choose an option: ");
+                input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "1":
+                        AddTask();
+                        break;
+                    case "2":
+                        ListTasks();
+                        break;
+                    case "3":
+                        MarkTaskAsDone();
+                        break;
+                    case "4":
+                        RemoveTask();
+                        break;
+                    case "5":
+                        Console.WriteLine("Exiting...");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option. Please try again.");
+                        break;
+                }
+            } while (input != "5");
+        }
+
+        // Moved out of Main: class-level static methods (compatible with C# 7.3)
+        private static void AddTask()
+        {
+            Console.Write("Enter task description: ");
+            string desc = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(desc))
+            {
+                Console.WriteLine("Task description cannot be empty.");
+                return;
+            }
+
+            todoList.Add(new TodoItem { Description = desc.Trim(), IsDone = false });
+            Console.WriteLine("Task added!");
+        }
+
+        private static void ListTasks()
+        {
+            Console.WriteLine("\nYour Tasks:");
+            if (todoList.Count == 0)
+            {
+                Console.WriteLine("No tasks yet.");
+                return;
+            }
+
+            for (int i = 0; i < todoList.Count; i++)
+            {
+                var item = todoList[i];
+                Console.WriteLine($"{i + 1}. [{(item.IsDone ? "X" : " ")}] {item.Description}");
+            }
+        }
+
+        private static void MarkTaskAsDone()
+        {
+            if (todoList.Count == 0)
+            {
+                Console.WriteLine("No tasks to mark.");
+                return;
+            }
+
+            ListTasks();
+            Console.Write("Enter task number to mark as done: ");
+            string line = Console.ReadLine();
+            int num;
+            if (int.TryParse(line, out num) && num >= 1 && num <= todoList.Count)
+            {
+                todoList[num - 1].IsDone = true;
+                Console.WriteLine("Task marked as done!");
+            }
+            else
+            {
+                Console.WriteLine("Invalid task number.");
+            }
+        }
+
+        private static void RemoveTask()
+        {
+            if (todoList.Count == 0)
+            {
+                Console.WriteLine("No tasks to remove.");
+                return;
+            }
+
+            ListTasks();
+            Console.Write("Enter task number to remove: ");
+            string line = Console.ReadLine();
+            int num;
+            if (int.TryParse(line, out num) && num >= 1 && num <= todoList.Count)
+            {
+                todoList.RemoveAt(num - 1);
+                Console.WriteLine("Task removed!");
+            }
+            else
+            {
+                Console.WriteLine("Invalid task number.");
+            }
+        }
+
+        // Nested class representing a to-do item
+        class TodoItem
+        {
+            public string Description { get; set; }
+            public bool IsDone { get; set; }
+        }
+    }
+}
